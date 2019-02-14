@@ -9,6 +9,10 @@ you use `bin/dice`:
 dice expression [random_seed]
 ```
 
+## Installation
+
+Run `make`, `make test`, and then if it looks good, `make install`.
+
 ## Why?
 
 It seemed like both an interesting enough problem to be fun to solve, but also 
