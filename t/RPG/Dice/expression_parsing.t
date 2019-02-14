@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-use Test::More tests => 10;
+use Test::More tests => 14;
 
 use Data::Dumper;
 
@@ -33,6 +33,11 @@ my %expr_tests = (
 	'2d6 + 1d4'   => [qw/2d6 + 1d4/],
 	'2d6  +  1d4' => [qw/2d6 + 1d4/],
 
+	# Can it parse normal arithmetic?
+	'5 + 5' => [qw/5 + 5/],
+	'5 * 5' => [qw/5 * 5/],
+	'5 * 5 + (2 - 2)' => [qw/5 * 5 + ( 2 - 2 )/],
+
 	# Test that complex parens can be handled
 	'2d6 + (1d4 + 1d4)'         => [qw/2d6 + ( 1d4 + 1d4 )/],
 	'2d6 + (1d4 + (3d8 + 1d6))' => [qw/2d6 + ( 1d4 + ( 3d8 + 1d6 ) )/],
@@ -43,3 +48,5 @@ foreach my $expr (keys %expr_tests) {
 	is_deeply(\@got, $expected, $expr);
 }
 
+# Can it do basic math?
+is(solve_dice_expression([qw/5 + 5/]), 10, '5 + 5 = 10');
