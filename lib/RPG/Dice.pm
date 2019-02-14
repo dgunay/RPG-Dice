@@ -160,7 +160,7 @@ Checks that the given token is of form [int]d[int], i.e. 2d6. Both the number
 of rolls and the number of sides of the die can be captured as return values
 like so:
 
-	my ($num_rolls, $num_sides) = is_diceroll_token('2d6');>>
+	my ($num_rolls, $num_sides) = is_diceroll_token('2d6');
 
 =cut
 sub is_diceroll_token {
