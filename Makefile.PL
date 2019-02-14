@@ -9,4 +9,5 @@ WriteMakefile
 (
   NAME         => 'RPG::Dice',
   VERSION_FROM => 'lib/RPG/Dice.pm',
+  EXE_FILES    => [ qw(bin/dice) ],
 );

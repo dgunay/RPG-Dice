@@ -23,5 +23,5 @@ print solve_dice_expression(\@tokens, $rand_seed);
 # Subroutines
 #################
 sub usage {
-	return "Usage: perl dice.pl dice_expression [random_seed]";
+	return "Usage: dice dice_expression [random_seed]";
 }

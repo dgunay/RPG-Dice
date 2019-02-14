@@ -3,8 +3,8 @@ bin/dice
 lib/RPG/Dice.pm
 
 # Tests
-t/RPG/Dice/expression_parsing.t
-t/RPG/Dice/token_validation.t
+t/expression_parsing.t
+t/token_validation.t
 
 # Documentation
 Makefile.PL
