@@ -73,7 +73,7 @@ sub solve_dice_expression {
 		die "Token $token is invalid" unless is_valid_token($token);
 
 		# Upon encountering a dice token (i.e. 2d6), roll it and capture the value
-		push @expr, roll($token) if is_diceroll_token($token);
+		push @expr, roll($token, $random_seed) if is_diceroll_token($token);
 
 		# Otherwise store the token for basic math
 		push @expr, $token if ( is_math_token($token) or is_int($token) );

@@ -1,8 +1,4 @@
-# To test:
-# - happy paths
-# - bad paths
-# - malicious expressions
-
+#!/usr/bin/env perl
 use strict;
 use warnings;
 
@@ -14,15 +10,18 @@ use RPG::Dice qw(
 # Receive expression
 my $expr = $ARGV[0] or die usage();
 
+# Get random seed if any
+my $rand_seed = $ARGV[1] if exists $ARGV[1];
+
 # First split the expression into tokens
 my @tokens = tokenize_expression($expr);
 
 # Print the solution
-print solve_dice_expression(\@tokens);
+print solve_dice_expression(\@tokens, $rand_seed);
 
 #################
 # Subroutines
 #################
 sub usage {
-	return "Usage: perl dice.pl [dice expression]";
+	return "Usage: perl dice.pl dice_expression [random_seed]";
 }
