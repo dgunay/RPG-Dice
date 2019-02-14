@@ -53,6 +53,11 @@ sub tokenize_expression {
 		die "Char $char is not a valid token";
 	}
 	
+	# Validation
+	foreach my $token (@result) {
+		croak "'$token' is not a valid token" unless is_valid_token($token);
+	}
+
 	return @result;
 }
 
@@ -78,10 +83,11 @@ sub solve_dice_expression {
 	return eval join("", @expr);
 }
 
-# Rolls a single dice token
+# Rolls a single dice token. If $random_seed is set, do be aware that it will
+# be passed to srand().
 sub roll {
 	my $dice_token  = shift;
-	my $random_seed = shift;
+	my $random_seed = shift // undef;
 
 	# Makes rolls deterministic if the caller wants
 	srand($random_seed) if $random_seed;
@@ -110,11 +116,9 @@ sub is_math_token {
 	return $token =~ /^[\+\-*\/\(\)]$/;
 }
 
-# Can't contain any tokens NOT in this character class
-# (numbers, char d, +-/*, ())
 sub is_valid_token {
 	my $token = shift;
-	return $token !~ /[^\dd\+\-*\/\(\)]/;
+	return (is_diceroll_token($token) or is_math_token($token) or is_int($token));
 }
 
 sub is_int {

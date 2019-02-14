@@ -6,16 +6,18 @@
 use strict;
 use warnings;
 
-use RPG::Dice;
+use RPG::Dice qw(
+	tokenize_expression
+	solve_dice_expression
+);
 
 # Receive expression
 my $expr = $ARGV[0] or die usage();
 
-# First split into tokens on spaces, operators, and parens
-# i.e. 4d6+2d4 won't split into (4d6 + 2d4)
+# First split the expression into tokens
 my @tokens = tokenize_expression($expr);
 
-# Join and eval
+# Print the solution
 print solve_dice_expression(\@tokens);
 
 #################

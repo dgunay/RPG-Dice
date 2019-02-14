@@ -6,7 +6,6 @@ use Test::More tests => 18;
 use RPG::Dice qw(
 	is_diceroll_token
 	is_math_token
-	is_valid_token
 );
 
 # Test our dice roll validations
