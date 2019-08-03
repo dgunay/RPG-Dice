@@ -8,7 +8,7 @@ use RPG::Dice qw(
 );
 
 # Receive expression
-my $expr = $ARGV[0] or die usage();
+my $expr = $ARGV[0] or die usage() . "\n";
 
 # Get random seed if any
 my $rand_seed = $ARGV[1] if exists $ARGV[1];
